@@ -35,3 +35,14 @@ Los adaptadores se escriben y prueban (cada uno con su simulador) en el
 repositorio de la app, y se publican acá ya construidos y firmados con
 `tools/publish-catalog.sh`. Los archivos de este repositorio no se editan a mano:
 cualquier cambio invalidaría la firma.
+
+## Códigos infrarrojos
+
+[`ir/v1/`](ir/v1/) tiene códigos de controles remotos por marca y modelo
+(aires acondicionados, teles y audio, ventiladores). La app baja el índice y,
+cuando el usuario elige su modelo, solo ese archivo.
+
+Los códigos vienen de [SmartIR](https://github.com/smartHomeHub/SmartIR),
+© 2019 Vassilis Panos, bajo licencia MIT ([`ir/v1/LICENSE-SmartIR.txt`](ir/v1/LICENSE-SmartIR.txt)).
+Se convirtieron con `tools/ir-library.ts` (solo los de formato Broadlink, y
+cada código se verifica al convertir).
