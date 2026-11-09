@@ -7,7 +7,7 @@ vez que se agrega un adaptador.
 *Brand coverage of the DoSync app across North America, Latin America and Europe,
 updated every time an adapter is added.*
 
-Última revisión: **9 de noviembre de 2026**.
+Última revisión: **9 de noviembre de 2026** (se sumaron Sony Bravia y Lutron).
 
 ## Cómo leer la tabla
 
@@ -28,9 +28,9 @@ técnica de cada marca. El orden dentro de cada categoría es por presencia, de 
 
 ## Resumen
 
-- **Funcionan hoy:** 69 marcas o familias, más cientos de aires, teles y equipos por infrarrojo.
-- **Próximos sin trámite (🟢):** Sony Bravia, Lutron Caséta, Hubitat, Homey, Drayton Wiser,
-  cámaras Google Nest, Enphase, SolarEdge, Awair y Tailwind.
+- **Funcionan hoy:** 71 marcas o familias, más cientos de aires, teles y equipos por infrarrojo.
+- **Próximos sin trámite (🟢):** Hubitat, Homey, Drayton Wiser, cámaras Google Nest, Enphase,
+  SolarEdge, Awair y Tailwind.
 - **Con registro en el portal de la marca (🟡):** Home Connect, SmartThings sin vencimiento,
   TTLock, Honeywell Resideo, GE SmartHQ, Danfoss Ally y Google Home APIs.
 - **Huecos que no se pueden cubrir directo:** Ring, Arlo, Blink, Wyze, Eufy, Ecovacs, Shark,
@@ -54,7 +54,8 @@ técnica de cada marca. El orden dentro de cada categoría es por presencia, de 
 | IKEA DIRIGERA | EU · NA | ✅ (red local) |
 | LIFX, Nanoleaf, Elgato, WLED, Magic Home | NA · EU | ✅ (red local) |
 | Belkin Wemo | NA | ✅ (red local) |
-| Lutron Caséta | NA | 🟢 (puente local, emparejado con su botón) |
+| Lutron Caséta Smart Bridge PRO y RA2 Select | NA | ✅ (red local, protocolo de integración oficial de Lutron) |
+| Lutron Caséta con el puente común | NA | ↪ (SmartThings o Home Assistant) |
 | Leviton, Eve | NA · EU | ↪ (Matter o SmartThings) |
 | Innr, Osram/Ledvance Zigbee, Aqara | EU · LA | ↪ (Zigbee2MQTT, deCONZ, Matter) |
 | Netzhome, Tecnolite Connect | LA (México) | ❓ |
@@ -70,7 +71,7 @@ técnica de cada marca. El orden dentro de cada categoría es por presencia, de 
 | TCL (Google TV o Roku TV) | NA · LA · EU | ✅ (red local) |
 | Hisense con Google TV o Roku TV | NA · LA · EU | ✅ (red local) |
 | Hisense con VIDAA | NA · LA · EU | ↪ (infrarrojo) · ⛔ por red |
-| Sony Bravia | NA · LA · EU | 🟢 (control por IP oficial de Sony) · hoy ✅ como Android TV |
+| Sony Bravia | NA · LA · EU | ✅ (control por IP oficial de Sony; las que tienen Google TV, también como Android TV) |
 | Philips | EU · LA | ✅ (red local) |
 | Roku | NA · LA | ✅ (red local) |
 | Amazon Fire TV y aparatos Android | NA · LA · EU | ✅ (ADB en la red local) |
@@ -166,7 +167,7 @@ técnica de cada marca. El orden dentro de cada categoría es por presencia, de 
 | Somfy TaHoma | EU · LA | ✅ (red local) |
 | Hunter Douglas PowerView | NA · EU | ✅ (red local) |
 | IKEA, SwitchBot Curtain | EU · NA | ✅ |
-| Lutron Serena | NA | 🟢 (con Lutron Caséta) |
+| Lutron Serena | NA | ✅ (con Smart Bridge PRO o RA2 Select) |
 
 ## Energía y calidad del aire
 
