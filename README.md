@@ -10,6 +10,7 @@ versión.
 - Firma Ed25519 del archivo exacto: [`catalog/v1/index.json.sig`](catalog/v1/index.json.sig)
 - Servido en: https://giulianireg-spec.github.io/dosync-adapters/catalog/v1/index.json
 - Política de privacidad de la app: https://giulianireg-spec.github.io/dosync-adapters/privacidad/
+- **Qué marcas funcionan y cuáles vienen:** [COBERTURA.md](COBERTURA.md) (Norteamérica, Latinoamérica y Europa)
 
 ## Por qué es seguro descargarlo
 
