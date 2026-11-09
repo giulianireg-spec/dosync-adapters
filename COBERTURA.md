@@ -7,7 +7,7 @@ vez que se agrega un adaptador.
 *Brand coverage of the DoSync app across North America, Latin America and Europe,
 updated every time an adapter is added.*
 
-Última revisión: **9 de noviembre de 2026** (se sumaron los sensores, Hubitat, Homey, Tailwind, Awair, Enphase, Drayton Wiser y los avisos de cámaras y timbres Nest).
+Última revisión: **9 de noviembre de 2026** (se sumaron MQTT genérico para proyectos caseros y las alarmas DSC con Envisalink; antes, los sensores, Hubitat, Homey, Tailwind, Awair, Enphase, Drayton Wiser y los avisos de cámaras Nest).
 
 ## Cómo leer la tabla
 
@@ -28,9 +28,13 @@ técnica de cada marca. El orden dentro de cada categoría es por presencia, de 
 
 ## Resumen
 
-- **Funcionan hoy:** 77 marcas o familias, más cientos de aires, teles y equipos por infrarrojo.
+- **Funcionan hoy:** 79 marcas o familias, más cientos de aires, teles y equipos por infrarrojo.
 - **Sensores:** temperatura, humedad, CO₂, puerta, movimiento y agua desde Home Assistant,
   Zigbee2MQTT, ESPHome, SwitchBot, Netatmo y Bluetooth (BTHome / pvvx). Sirven para rutinas.
+- **Proyectos caseros:** cualquier equipo que se anuncie por MQTT (Tasmota, ESPHome, Shelly,
+  OpenMQTTGateway, Raspberry Pi o ESP32 propios), sin Home Assistant.
+- **Alarmas:** DSC con Envisalink (armar, desarmar con confirmación y zonas). Risco, Paradox y
+  Ajax no publican un protocolo: por Home Assistant o SmartThings.
 - **Próximos sin trámite (🟢):** SolarEdge (por Modbus local: su API en la nube pone la clave
   en la dirección, y DoSync no manda claves así).
 - **Con registro en el portal de la marca (🟡):** Home Connect, SmartThings sin vencimiento,
@@ -192,6 +196,30 @@ humedad, prendé el extractor") o se consultan sin IA ("¿qué humedad hay en el
 | Hubitat y Homey: cualquier sensor que tengan | NA · EU | ✅ (red local) |
 | Enphase: producción solar y consumo (W) | NA · EU | ✅ (red local) |
 | Google Nest: movimiento en cámaras y timbres | NA · EU | ✅ (avisos por Pub/Sub) |
+
+## Alarmas
+
+Desarmar siempre espera la confirmación de una persona, venga la orden de donde venga.
+
+| Marca | Región | Estado |
+|---|---|---|
+| DSC PowerSeries y Neo con Envisalink (EVL-3, EVL-4, UNO) | NA · LA | ✅ (red local, TPI publicado por Eyez-On) |
+| Honeywell / Ademco Vista con Envisalink | NA | 🟢 (mismo módulo, otro dialecto del TPI) |
+| Cualquier alarma en Home Assistant o SmartThings | todas | ↪ |
+| Risco (LightSYS, Agility) | EU · LA | ↪ (sin protocolo publicado: por Home Assistant) |
+| Paradox (IP150) | EU · LA | ↪ (sin protocolo publicado: por Home Assistant) |
+| Ajax | EU · LA | ⛔ (sin API abierta) |
+| Garnet, X-28 y otras centrales locales | LA (Argentina) | ❓ (falta confirmar si tienen interfaz documentada) |
+
+## Proyectos caseros (Raspberry Pi, ESP32, MQTT)
+
+| Fuente | Región | Estado |
+|---|---|---|
+| Cualquier equipo con descubrimiento MQTT (Tasmota, ESPHome, Shelly, OpenMQTTGateway, Frigate, scripts propios) | todas | ✅ (broker de la casa; luces, enchufes, persianas, cerraduras y sensores) |
+| Placas ESPHome por su API nativa | todas | ✅ (red local) |
+| Tasmota, WLED, Sonoff DIY por HTTP | todas | ✅ (red local) |
+| Impresoras 3D con OctoPrint o Klipper | todas | ✅ (red local) |
+| Raspberry Pi sin MQTT ni Home Assistant | todas | ↪ (publicar por MQTT con [descubrimiento](https://www.home-assistant.io/integrations/mqtt/#mqtt-discovery)) |
 
 ## Energía y calidad del aire
 
