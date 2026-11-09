@@ -7,7 +7,7 @@ vez que se agrega un adaptador.
 *Brand coverage of the DoSync app across North America, Latin America and Europe,
 updated every time an adapter is added.*
 
-Última revisión: **9 de noviembre de 2026** (se sumaron los sensores: temperatura, humedad, CO₂, puerta, movimiento y agua).
+Última revisión: **9 de noviembre de 2026** (se sumaron los sensores, Hubitat, Homey, Tailwind, Awair, Enphase, Drayton Wiser y los avisos de cámaras y timbres Nest).
 
 ## Cómo leer la tabla
 
@@ -28,11 +28,11 @@ técnica de cada marca. El orden dentro de cada categoría es por presencia, de 
 
 ## Resumen
 
-- **Funcionan hoy:** 71 marcas o familias, más cientos de aires, teles y equipos por infrarrojo.
+- **Funcionan hoy:** 77 marcas o familias, más cientos de aires, teles y equipos por infrarrojo.
 - **Sensores:** temperatura, humedad, CO₂, puerta, movimiento y agua desde Home Assistant,
   Zigbee2MQTT, ESPHome, SwitchBot, Netatmo y Bluetooth (BTHome / pvvx). Sirven para rutinas.
-- **Próximos sin trámite (🟢):** Hubitat, Homey, Drayton Wiser, cámaras Google Nest, Enphase,
-  SolarEdge, Awair y Tailwind.
+- **Próximos sin trámite (🟢):** SolarEdge (por Modbus local: su API en la nube pone la clave
+  en la dirección, y DoSync no manda claves así).
 - **Con registro en el portal de la marca (🟡):** Home Connect, SmartThings sin vencimiento,
   TTLock, Honeywell Resideo, GE SmartHQ, Danfoss Ally y Google Home APIs.
 - **Huecos que no se pueden cubrir directo:** Ring, Arlo, Blink, Wyze, Eufy, Ecovacs, Shark,
@@ -108,7 +108,7 @@ técnica de cada marca. El orden dentro de cada categoría es por presencia, de 
 | tado° | EU | ✅ (cuenta de la marca) |
 | Netatmo / Legrand / BTicino | EU | ✅ (cuenta de la marca) |
 | Bosch Smart Home, Homematic, FRITZ!DECT | EU | ✅ (red local) |
-| Drayton Wiser | EU (Reino Unido) | 🟢 (API local del hub) |
+| Drayton Wiser | EU (Reino Unido) | ✅ (red local, con la clave del modo Setup del hub) |
 | Honeywell / Resideo (Lyric, T-series) | NA · EU | 🟡 (programa de desarrolladores de Resideo) |
 | Danfoss Ally | EU | 🟡 (API oficial con registro) |
 | ecobee | NA | ↪ (Home Assistant; no da claves nuevas a desarrolladores) |
@@ -136,7 +136,7 @@ técnica de cada marca. El orden dentro de cada categoría es por presencia, de 
 | Tedee | EU | ✅ (red local) |
 | SwitchBot | NA · EU | ✅ (cuenta de la marca) |
 | Portones con ratgdo / ESPHome | NA | ✅ (red local) |
-| Tailwind (portones) | NA | 🟢 (API local oficial) |
+| Tailwind (portones) | NA | ✅ (red local) |
 | TTLock y las cerraduras chinas que lo usan | LA · EU | 🟡 (registro en su plataforma abierta) |
 | Yale / August, Schlage, Kwikset, Level | NA · EU | ↪ (Matter o Home Assistant) |
 | Samsung (cerraduras SDS) | LA · NA | ↪ (SmartThings) |
@@ -149,7 +149,7 @@ técnica de cada marca. El orden dentro de cada categoría es por presencia, de 
 |---|---|---|
 | Hikvision, Dahua, Reolink, Amcrest, Imou, Ezviz y toda cámara ONVIF | todas | ✅ (red local) |
 | TP-Link Tapo (cámaras) | NA · LA · EU | ✅ (ONVIF en la red local) |
-| Google Nest (cámaras y timbres) | NA · EU | 🟢 (misma API de Google que los termostatos) |
+| Google Nest (cámaras y timbres) | NA · EU | ✅ (avisos de movimiento, personas y timbre por Pub/Sub; sin fotos: la API solo da video en vivo) |
 | Intelbras Mibo | LA (Brasil) | ❓ (ONVIF según el modelo) |
 | Ring, Arlo, Blink, Wyze, Eufy | NA · EU | ⛔ |
 
@@ -188,16 +188,19 @@ humedad, prendé el extractor") o se consultan sin IA ("¿qué humedad hay en el
 | Termómetros Xiaomi con el firmware original | todas | ↪ (cifran con una clave de la nube de Xiaomi: por Home Assistant) |
 | Shelly H&T y Door/Window por WiFi | todas | ↪ (duermen para ahorrar pila: por Home Assistant o MQTT) |
 | Sensores Tuya / Smart Life | todas | ↪ (por Home Assistant o Zigbee2MQTT) |
-| Awair (calidad del aire) | NA | 🟢 (API local oficial) |
+| Awair (Element, Omni, Mint) | NA | ✅ (red local) |
+| Hubitat y Homey: cualquier sensor que tengan | NA · EU | ✅ (red local) |
+| Enphase: producción solar y consumo (W) | NA · EU | ✅ (red local) |
+| Google Nest: movimiento en cámaras y timbres | NA · EU | ✅ (avisos por Pub/Sub) |
 
 ## Energía y calidad del aire
 
 | Marca | Región | Estado |
 |---|---|---|
 | Shelly EM, enchufes con medición | todas | ✅ (red local) |
-| Enphase (solar) | NA · EU | 🟢 (API local oficial) |
-| SolarEdge (solar) | NA · EU | 🟢 (API oficial con la clave del usuario) |
-| Awair (calidad del aire) | NA | 🟢 (API local oficial) |
+| Enphase (solar) | NA · EU | ✅ (red local, con el token de Enlighten) |
+| SolarEdge (solar) | NA · EU | 🟢 (Modbus TCP local, SunSpec; la API en la nube lleva la clave en la dirección) |
+| Awair (calidad del aire) | NA | ✅ (red local) |
 | Rachio (riego) | NA | ✅ (cuenta de la marca) |
 | Emporia, Sense | NA | ⛔ |
 
@@ -209,8 +212,8 @@ humedad, prendé el extractor") o se consultan sin IA ("¿qué humedad hay en el
 | Samsung SmartThings | todas | ✅ (cuenta) · 🟡 para que el acceso no venza |
 | Zigbee2MQTT, deCONZ, ESPHome, Homematic CCU | todas | ✅ (red local) |
 | Matter | todas | ↪ (por Home Assistant) · 🟡 directo con Google Home APIs |
-| Hubitat | NA | 🟢 (Maker API local, oficial) |
-| Homey | EU | 🟢 (Web API oficial) |
+| Hubitat | NA | ✅ (red local, Maker API) |
+| Homey Pro | EU | ✅ (red local, clave API) |
 | Klipper / OctoPrint (impresoras 3D) | todas | ✅ (red local) |
 | Apple Home, Amazon Alexa | todas | ⛔ (no tienen API para Android) |
 
