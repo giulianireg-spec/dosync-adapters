@@ -7,7 +7,7 @@ vez que se agrega un adaptador.
 *Brand coverage of the DoSync app across North America, Latin America and Europe,
 updated every time an adapter is added.*
 
-Última revisión: **9 de noviembre de 2026** (se sumaron Sony Bravia y Lutron).
+Última revisión: **9 de noviembre de 2026** (se sumaron los sensores: temperatura, humedad, CO₂, puerta, movimiento y agua).
 
 ## Cómo leer la tabla
 
@@ -29,6 +29,8 @@ técnica de cada marca. El orden dentro de cada categoría es por presencia, de 
 ## Resumen
 
 - **Funcionan hoy:** 71 marcas o familias, más cientos de aires, teles y equipos por infrarrojo.
+- **Sensores:** temperatura, humedad, CO₂, puerta, movimiento y agua desde Home Assistant,
+  Zigbee2MQTT, ESPHome, SwitchBot, Netatmo y Bluetooth (BTHome / pvvx). Sirven para rutinas.
 - **Próximos sin trámite (🟢):** Hubitat, Homey, Drayton Wiser, cámaras Google Nest, Enphase,
   SolarEdge, Awair y Tailwind.
 - **Con registro en el portal de la marca (🟡):** Home Connect, SmartThings sin vencimiento,
@@ -168,6 +170,25 @@ técnica de cada marca. El orden dentro de cada categoría es por presencia, de 
 | Hunter Douglas PowerView | NA · EU | ✅ (red local) |
 | IKEA, SwitchBot Curtain | EU · NA | ✅ |
 | Lutron Serena | NA | ✅ (con Smart Bridge PRO o RA2 Select) |
+
+## Sensores (temperatura, humedad, CO₂, puerta, movimiento, agua)
+
+Un sensor no se maneja: mide, y sus lecturas disparan rutinas ("si el baño pasa de 70 % de
+humedad, prendé el extractor") o se consultan sin IA ("¿qué humedad hay en el baño?").
+
+| Marca o fuente | Región | Estado |
+|---|---|---|
+| Cualquier sensor en Home Assistant (Zigbee, Z-Wave, Matter, Aqara, Sonoff…) | todas | ✅ (red local) |
+| Cualquier sensor en Zigbee2MQTT (Aqara, Sonoff, Tuya Zigbee, IKEA…) | todas | ✅ (red local; al instante si el broker retiene los mensajes) |
+| Placas ESPHome con sensores (DHT, BME280, SCD40, PIR, contacto) | todas | ✅ (red local) |
+| SwitchBot Meter, Meter Plus, Meter Pro (CO₂), Outdoor, Hub 2, puerta, movimiento, agua | todas | ✅ (cuenta de la marca) |
+| Netatmo estación meteorológica y Healthy Home Coach | EU · NA | ✅ (cuenta de la marca; si se conectó antes, volver a conectar) |
+| Shelly BLU (puerta, movimiento, H&T) | todas | ✅ (Bluetooth, BTHome) |
+| Termómetros Xiaomi LYWSD03MMC y similares con firmware pvvx o ATC | todas | ✅ (Bluetooth) |
+| Termómetros Xiaomi con el firmware original | todas | ↪ (cifran con una clave de la nube de Xiaomi: por Home Assistant) |
+| Shelly H&T y Door/Window por WiFi | todas | ↪ (duermen para ahorrar pila: por Home Assistant o MQTT) |
+| Sensores Tuya / Smart Life | todas | ↪ (por Home Assistant o Zigbee2MQTT) |
+| Awair (calidad del aire) | NA | 🟢 (API local oficial) |
 
 ## Energía y calidad del aire
 
