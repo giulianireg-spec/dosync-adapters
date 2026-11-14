@@ -104,6 +104,7 @@ técnica de cada marca. El orden dentro de cada categoría es por presencia, de 
 | Marca | Región | Estado |
 |---|---|---|
 | Cualquier aire con control remoto: BGH, Philco, Surrey, Carrier, Midea, Hisense, Mirage, Fujitsu, Hitachi | todas | ✅ (infrarrojo, biblioteca de cientos de modelos) |
+| Hyundai (aires) | LA | ✅ (infrarrojo; **probado con un aire real** desde el emisor del celular, modelo HY6INV) |
 | LG ThinQ | NA · LA · EU | ✅ (cuenta de la marca) |
 | Samsung WindFree | NA · LA · EU | ✅ (SmartThings) |
 | Daikin | EU · NA | ✅ (red local) |
