@@ -28,7 +28,7 @@ técnica de cada marca. El orden dentro de cada categoría es por presencia, de 
 
 ## Resumen
 
-- **Funcionan hoy:** 79 marcas o familias, más cientos de aires, teles y equipos por infrarrojo.
+- **Funcionan hoy:** 80 marcas o familias, más cientos de aires, teles y equipos por infrarrojo.
 - **Sensores:** temperatura, humedad, CO₂, puerta, movimiento y agua desde Home Assistant,
   Zigbee2MQTT, ESPHome, SwitchBot, Netatmo y Bluetooth (BTHome / pvvx). Sirven para rutinas.
 - **Proyectos caseros:** cualquier equipo que se anuncie por MQTT (Tasmota, ESPHome, Shelly,
@@ -53,6 +53,7 @@ técnica de cada marca. El orden dentro de cada categoría es por presencia, de 
 | TP-Link Kasa | NA · LA | ✅ (red local) |
 | TP-Link Tapo | NA · LA · EU | ✅ (red local) |
 | Smart Life / Tuya y sus marcas: Positivo, Nexxt, Steren, Feit, Nedis, Lidl Livarno, Ledvance WiFi | NA · LA · EU | ✅ (red local o cuenta Tuya) |
+| Calex (luces, tiras LED y enchufes) | EU | ✅ (es Tuya: los aparatos se pasan de la app Calex Smart a Smart Life) |
 | Govee | NA · EU | ✅ (red local o cuenta) |
 | Xiaomi / Mi Home y Yeelight | LA · EU | ✅ (red local) |
 | Shelly | EU · NA | ✅ (red local) |
@@ -152,8 +153,8 @@ técnica de cada marca. El orden dentro de cada categoría es por presencia, de 
 
 | Marca | Región | Estado |
 |---|---|---|
-| Hikvision, Dahua, Reolink, Amcrest, Imou, Ezviz y toda cámara ONVIF | todas | ✅ (red local) |
-| TP-Link Tapo (cámaras) | NA · LA · EU | ✅ (ONVIF en la red local) |
+| Hikvision, Dahua, Reolink, Amcrest, Imou, Ezviz y toda cámara ONVIF | todas | ✅ (red local: foto y **video en vivo** por RTSP; Imou Cruiser SE+ encontrada en una red real) |
+| TP-Link Tapo (cámaras) | NA · LA · EU | ✅ (ONVIF en el puerto 2020, foto y video en vivo) |
 | Google Nest (cámaras y timbres) | NA · EU | ✅ (avisos de movimiento, personas y timbre por Pub/Sub; sin fotos: la API solo da video en vivo) |
 | Intelbras Mibo | LA (Brasil) | ❓ (ONVIF según el modelo) |
 | Ring, Arlo, Blink, Wyze, Eufy | NA · EU | ⛔ |
