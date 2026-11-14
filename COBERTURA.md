@@ -7,7 +7,7 @@ vez que se agrega un adaptador.
 *Brand coverage of the DoSync app across North America, Latin America and Europe,
 updated every time an adapter is added.*
 
-Última revisión: **9 de noviembre de 2026** (se sumaron MQTT genérico para proyectos caseros y las alarmas DSC con Envisalink; antes, los sensores, Hubitat, Homey, Tailwind, Awair, Enphase, Drayton Wiser y los avisos de cámaras Nest).
+Última revisión: **14 de noviembre de 2026** (se sumaron las funciones propias de cada aparato: lo que sabe hacer más allá de prender y apagar; antes, MQTT genérico, las alarmas DSC con Envisalink, los sensores, Hubitat, Homey, Tailwind, Awair, Enphase, Drayton Wiser y los avisos de cámaras Nest).
 
 ## Cómo leer la tabla
 
@@ -33,6 +33,10 @@ técnica de cada marca. El orden dentro de cada categoría es por presencia, de 
   Zigbee2MQTT, ESPHome, SwitchBot, Netatmo y Bluetooth (BTHome / pvvx). Sirven para rutinas.
 - **Proyectos caseros:** cualquier equipo que se anuncie por MQTT (Tasmota, ESPHome, Shelly,
   OpenMQTTGateway, Raspberry Pi o ESP32 propios), sin Home Assistant.
+- **Funciones propias (todo lo que el aparato sabe hacer):** ver la sección al final. Las
+  plataformas que informan las capacidades de cada aparato las traen solas (Tuya, SmartThings,
+  Home Assistant, Homey, Hubitat, MQTT, Zigbee2MQTT, ESPHome, Govee, Home Connect, Electrolux,
+  LG ThinQ, Somfy, IKEA); en el resto van las que documenta cada protocolo.
 - **Alarmas:** DSC con Envisalink (armar, desarmar con confirmación y zonas). Risco, Paradox y
   Ajax no publican un protocolo: por Home Assistant o SmartThings.
 - **Próximos sin trámite (🟢):** SolarEdge (por Modbus local: su API en la nube pone la clave
@@ -260,3 +264,38 @@ Desarmar siempre espera la confirmación de una persona, venga la orden de donde
 - Brasil, Positivo e Intelbras: https://www.tecmundo.com.br/produto/284446-tudo-voce-precisa-saber-comprar-artigos-inteligentes.htm · https://academia.nubimetrics.com/br/smart-home-produtos-em-alta-e-commerce
 - Climatización en el Reino Unido (Hive, Resideo, Drayton Wiser): https://community.openhab.org/t/resideo-api-binding-for-honeywell-thermostats-and-sensors/159903 · https://community.home-assistant.io/t/recommended-a-heating-control-in-the-uk-for-ha/125725
 - Aqara Hub M3 como puente Matter local: https://home-assistant.io/blog/2024/09/03/aqara-joins-works-with-home-assistant/
+
+---
+
+## Funciones propias por marca
+
+Además de las acciones comunes (prender, brillo, color, temperatura, abrir, volumen…), cada
+aparato muestra en sus controles lo que sabe hacer, y la IA también puede usarlo. Lo delicado
+(sirenas, cerraduras, temperaturas de impresoras 3D) espera la confirmación de una persona.
+
+| Marca o plataforma | Qué se suma | De dónde sale |
+|---|---|---|
+| Tuya / Smart Life (y sus marcas) | Todas las funciones del aparato: modos, niveles, temporizadores, traba para chicos… | Especificación de cada aparato |
+| SmartThings | Los comandos de cada capacidad con sus valores | Definiciones de capacidades |
+| Home Assistant | Listas, números, botones, sirenas y textos | Entidades del usuario |
+| Homey · Hubitat | Capacidades que se pueden cambiar · comandos sin parámetros | Lo que informa el hub |
+| MQTT · Zigbee2MQTT · ESPHome | Listas, números, botones, sirenas y textos · todo lo que expone cada aparato | Anuncios de cada equipo |
+| Govee (nube) | Escenas, modos, música, blanco en kelvin, oscilación | API de capacidades |
+| SwitchBot | Por modelo: modos de purificadores y humidificadores, viento de ventiladores, potencia de robots, efectos de luces, canal y botones aprendidos de controles IR | Tablas de comandos oficiales |
+| Home Connect · Electrolux · LG ThinQ | Programas y ajustes · lo escribible que declara · lo escribible del perfil | Lo que informa cada aparato |
+| Miele | Elegir programa, superfrío, supercongelado, luz, campana, modo sabático | Acciones permitidas en el momento |
+| Cámaras ONVIF (Imou, Dahua, Hikvision, Reolink, Tapo…) | Mover, zoom, posiciones guardadas, salidas (sirena) | Perfil ONVIF de la cámara |
+| Teles Samsung · LG · Sony · Android (ADB) | Escribir en el buscador y Enter; en Android, más teclas | Protocolo local de cada tele |
+| Philips TV · Android TV · Vizio · Panasonic · Roku · Kodi | Botones del control, volumen exacto, Ambilight · más teclas · volumen · buscar · escribir | Protocolo local |
+| Chromecast · Onkyo/Pioneer · Denon HEOS · Sonos · Bose · Denon AVR · Yamaha | Volumen exacto, entradas, modo de sonido, presets, repetir/aleatorio, graves/agudos | Protocolo local |
+| WiZ · LIFX · Yeelight · Magic Home · Govee (red) · TP-Link · WLED · Hue · Nanoleaf · Tasmota · Shelly | Escenas, blanco en kelvin, efectos, velocidad, presets, apagado programado, luz piloto, "prender por un rato" | Protocolo local |
+| Gree · Daikin | Luz del panel, X-Fan, ionizador, aletas · aletas, niveles, Streamer | Protocolo local |
+| Roborock · Roomba | Potencia, volumen, "¿dónde estás?", limpieza puntual · vaciar en la base, potencia, pasadas | Protocolo local |
+| Nuki · Rachio · Nest · tado° · Netatmo · FRITZ!Box · Somfy · IKEA DIRIGERA | Lock 'n' Go y Opener · regar N minutos y postergar por lluvia · ventilar · prender por un rato y modo de la casa · calefacción al máximo y modo · Boost y ventana abierta · posición favorita y lamas · blanco, traba y luz de estado | API oficial de cada marca |
+| OctoPrint · Klipper | Temperaturas de cama y extrusor, llevar al origen, parada de emergencia | API local |
+
+**Todavía sin funciones propias** (solo lo común, porque su protocolo no ofrece más o no está
+documentado): Broadlink (enchufes), Tedee, Hunter Douglas PowerView, Lutron, Bosch Smart Home,
+Homematic, Drayton Wiser, Tailwind, Awair, Enphase, Envisalink, Elgato, myStrom, Wemo, Shelly
+persianas y dimmers, Tasmota relés, y los purificadores y lámparas Xiaomi que no son Roborock.
+
