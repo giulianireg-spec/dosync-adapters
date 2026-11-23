@@ -52,7 +52,7 @@ técnica de cada marca. El orden dentro de cada categoría es por presencia, de 
 
 | Marca | Región | Estado |
 |---|---|---|
-| Philips Hue | NA · LA · EU | ✅ (red local, con el puente) |
+| Philips Hue | NA · LA · EU | ✅ (red local, con el puente; avisa si una lámpara no responde) |
 | Philips WiZ | NA · LA · EU | ✅ (red local) |
 | TP-Link Kasa | NA · LA | ✅ (red local) |
 | TP-Link Tapo | NA · LA · EU | ✅ (red local) |
@@ -60,8 +60,8 @@ técnica de cada marca. El orden dentro de cada categoría es por presencia, de 
 | Calex (luces, tiras LED y enchufes) | EU | ✅ (es Tuya: los aparatos se pasan de la app Calex Smart a Smart Life) |
 | Govee | NA · EU | ✅ (red local o cuenta) |
 | Xiaomi / Mi Home y Yeelight | LA · EU | ✅ (red local) |
-| Shelly | EU · NA | ✅ (red local) |
-| Sonoff / eWeLink (modo LAN) y Tasmota | LA · EU | ✅ (red local) |
+| Shelly | EU · NA | ✅ (red local; también con contraseña, 1.ª y 2.ª generación) |
+| Sonoff (modo DIY) y Tasmota | LA · EU | ✅ (red local; Tasmota también con contraseña) |
 | IKEA DIRIGERA | EU · NA | ✅ (red local) |
 | LIFX, Nanoleaf, Elgato, WLED, Magic Home | NA · EU | ✅ (red local) |
 | Belkin Wemo | NA | ✅ (red local) |
